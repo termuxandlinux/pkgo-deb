@@ -1,0 +1,31 @@
+name: Build DEBIAN Package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up Node.js 20
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+      
+    - name: Set up dpkg
+      run: sudo apt-get update && sudo apt-get install -y dpkg
+      
+    - name: Build DEBIAN package
+      run: dpkg-deb --build . ~/pkgo.deb
+      
+    - name: Upload package as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: debian-package
+        path: ~/pkgo.deb

@@ -1,0 +1,6 @@
+Package: pkgo
+Version: 1.3
+Architecture: all
+Maintainer: Kevin Aexander Krefting<kakrefting@gmail.com>
+Depends: bash
+Description: A Package Installer For my Package System, now for Debian
