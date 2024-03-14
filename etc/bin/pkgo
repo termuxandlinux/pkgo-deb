@@ -121,7 +121,7 @@ if [ "$1" = "install" ] || [ "$1" = "search" ]; then
     fi
 
     # Pass the arguments to "pkg" command
-    pkg "$@"
+    apt "$@" -y
     exit 0
 fi
 
